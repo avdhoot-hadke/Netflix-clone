@@ -1,0 +1,24 @@
+/* .myList-page{
+    background-color: #181818;
+    height: 100vh;
+}
+.myList-cardSlider{
+    padding-top: 5.5rem;
+    padding-left: 3rem;
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+} */
+.myList-page {
+    background-color: #181818;
+    height: 100vh;
+}
+
+.myList-cardSlider {
+    padding-top: 9rem;
+    padding-left: 3rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 1rem; 
+    row-gap: 2.5rem; 
+}

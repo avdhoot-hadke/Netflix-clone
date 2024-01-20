@@ -1,0 +1,12 @@
+.selectGenre-cont{
+    padding-top: 5.5rem;
+    padding-left: 3rem;
+}
+.select-box{
+    cursor: pointer;
+    border: none;
+    color: white;
+    background-color: black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}

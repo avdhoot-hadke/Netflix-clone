@@ -1,0 +1,14 @@
+.slider{
+    overflow: hidden;
+    padding-top: 1.5rem;
+    background-color:#181818;
+    padding-bottom: 5rem;
+    padding-top: 1.5rem;
+}
+
+.parent-netflix{
+    background: linear-gradient(180deg, rgba(24,24,24, 0)0%,rgba(24,24,24, 0.3)2%, rgba(24,24,24, 0.6)5%, rgba(24,24,24, 1)10%);
+    position: absolute;
+    top: 80vh;
+    padding-top: 3rem;
+}
