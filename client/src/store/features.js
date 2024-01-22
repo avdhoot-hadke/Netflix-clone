@@ -166,7 +166,7 @@ export const getUserLikedMovies = createAsyncThunk(
       const {
         data: { movies },
       } = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api/user/liked/${email}`
+        `https://netflix-clone-1eehn2gez-avdhoot-hadkes-projects.vercel.app/api/user/liked/${email}`
       );
       console.log("FEAT", movies);
       return movies;
@@ -183,7 +183,7 @@ export const removeUserLikedMovies = createAsyncThunk(
       const {
         data: { movies },
       } = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/api/user/delete`,
+        `https://netflix-clone-1eehn2gez-avdhoot-hadkes-projects.vercel.app/api/user/delete`,
         { email, movieID }
       );
       console.log("FEAT", movies);
