@@ -6,7 +6,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
     const {
       data: { genres },
     } = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
     );
     return genres;
   } catch (error) {
@@ -17,7 +17,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 const getVideo = async (type, id) => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
     );
 
     if (response.status === 200) {
@@ -136,7 +136,7 @@ export const fetchMovies = createAsyncThunk(
     } = thunkApi.getState();
 
     return await getRawData(
-      `${process.env.REACT_APP_BASE_URL}/trending/${type}/week?api_key=${process.env.REACT_APP_API_KEY}`,
+      `https://api.themoviedb.org/3/trending/${type}/week?api_key=${process.env.REACT_APP_API_KEY}`,
       genres,
       type
     );
@@ -153,7 +153,7 @@ export const fetchDataByGenre = createAsyncThunk(
     console.log("GIVEN TYPE ***************==>", type);
 
     return await getRawData(
-      `${process.env.REACT_APP_BASE_URL}/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genre}`,
+      `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genre}`,
       genres,
       type
     );
