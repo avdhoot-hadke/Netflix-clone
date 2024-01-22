@@ -166,7 +166,7 @@ export const getUserLikedMovies = createAsyncThunk(
       const {
         data: { movies },
       } = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/api/user/liked/${email}`,
+        `https://netflix-clone-api-chi.vercel.app/api/user/liked/${email}`,
         {
           headers: {
             Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
@@ -188,7 +188,7 @@ export const removeUserLikedMovies = createAsyncThunk(
       const {
         data: { movies },
       } = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/api/user/delete`,
+        `https://netflix-clone-api-chi.vercel.app/api/user/delete`,
         {
           email,
           movieID,
