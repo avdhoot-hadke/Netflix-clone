@@ -31,7 +31,7 @@ const Card = React.memo(({ movieData, isLiked = false }) => {
     try {
       console.log(email, movieData);
       await axios
-        .post("http://localhost:3001/api/user/add", {
+        .post("https://netflix-clone-api-chi.vercel.app/api/user/add", {
           email,
           data: movieData,
         })
