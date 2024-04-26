@@ -9,7 +9,10 @@ const app = express();
 const port = 3001;
 
 // Enable CORS for all routes
-app.use(cors());
+const corsOptions = {
+    origin: '*',
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 //mongoDB connect
