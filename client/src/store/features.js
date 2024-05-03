@@ -217,6 +217,7 @@ export const netflixSlice = createSlice({
     movies: [],
     genresLoaded: false,
     genres: [],
+    likedMovies: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -231,11 +232,11 @@ export const netflixSlice = createSlice({
       state.movies = action.payload;
     });
     builder.addCase(getUserLikedMovies.fulfilled, (state, action) => {
-      state.movies = action.payload;
+      state.likedMovies = action.payload;
     });
     builder.addCase(removeUserLikedMovies.fulfilled, (state, action) => {
-      state.movies = action.payload;
-      console.log("UPDATED", state.movies);
+      state.likedMovies = action.payload;
+      console.log("UPDATED", state.likedMovies);
     });
   },
 });

@@ -30,8 +30,9 @@ const Card = React.memo(({ movieData, isLiked = false }) => {
   const addToList = async () => {
     try {
       console.log(email, movieData);
+      console.log("Adding movie to list");
       await axios
-        .post("https://netflix-clone-api-chi.vercel.app/api/user/add", {
+        .post(`${process.env.REACT_APP_SERVER_URL}/api/user/add`, {
           email,
           data: movieData,
         })
@@ -105,11 +106,14 @@ const Card = React.memo(({ movieData, isLiked = false }) => {
                     className="fa-regular fa-circle-check"
                     style={{ color: "#ffffff" }}
                     title="Remove from my List"
-                    onClick={() => {
-                      console.log("cardID", movieData.id);
-                      const movieID = movieData.id;
-                      dispatch(removeUserLikedMovies({ email, movieID }));
-                    }}
+                    onClick={
+                      () => {
+                        console.log("cardID", movieData.id);
+                        const movieID = movieData.id;
+                        dispatch(removeUserLikedMovies({ email, movieID }));
+                      }
+                      // removeFromList
+                    }
                   ></i>
                 ) : (
                   <i

@@ -15,11 +15,11 @@ export default function MyList() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [email, setEmail] = useState(undefined);
-  // const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
-  // const movies = useSelector((state) => state.netflix.movies);
-  const movies = useSelector((state) => state.netflix.movies);
-  // const genres = useSelector((state) => state.netflix.genres);
 
+  const movies = useSelector((state) => state.netflix.likedMovies);
+
+  console.log("renders");
+  console.log("movie", movies);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (currentUser) {
@@ -43,12 +43,6 @@ export default function MyList() {
         ) : (
           <NotAvailable />
         )}
-
-        {/* {movies ? (
-          <CardSlider data={movies} title="My List" />
-        ) : (
-          <NotAvailable />
-        )} */}
       </div>
     </div>
   );
