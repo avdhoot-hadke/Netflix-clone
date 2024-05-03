@@ -6,7 +6,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
     const {
       data: { genres },
     } = await axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
     );
     return genres;
   } catch (error) {
@@ -17,7 +17,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 const getVideo = async (type, id) => {
   try {
     const response = await axios.get(
-      `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+      `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
     );
 
     if (response.status === 200) {
@@ -136,7 +136,7 @@ export const fetchMovies = createAsyncThunk(
     } = thunkApi.getState();
 
     return await getRawData(
-      `https://api.themoviedb.org/3/trending/${type}/week?api_key=${process.env.REACT_APP_API_KEY}`,
+      `${process.env.REACT_APP_BASE_URL}/trending/${type}/week?api_key=${process.env.REACT_APP_API_KEY}`,
       genres,
       type
     );
@@ -153,7 +153,7 @@ export const fetchDataByGenre = createAsyncThunk(
     console.log("GIVEN TYPE ***************==>", type);
 
     return await getRawData(
-      `https://api.themoviedb.org/3/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genre}`,
+      `${process.env.REACT_APP_BASE_URL}/discover/${type}?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genre}`,
       genres,
       type
     );
@@ -162,15 +162,15 @@ export const fetchDataByGenre = createAsyncThunk(
 export const getUserLikedMovies = createAsyncThunk(
   "netflix/getLiked",
   async ({ email }) => {
-    if (email== undefined) {
-      console.log("email", email)
+    if (email == undefined) {
+      console.log("email", email);
       throw new Error("Email is required.");
     }
     try {
       const {
         data: { movies },
       } = await axios.get(
-        `https://netflix-clone-api-chi.vercel.app/api/user/liked/${email}`,
+        `${process.env.REACT_APP_SERVER_URL}/api/user/liked/${email}`,
         {
           headers: {
             Authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
@@ -193,7 +193,7 @@ export const removeUserLikedMovies = createAsyncThunk(
       const {
         data: { movies },
       } = await axios.put(
-        `https://netflix-clone-api-chi.vercel.app/api/user/delete`,
+        `${process.env.REACT_APP_SERVER_URL}/api/user/delete`,
         {
           email,
           movieID,
