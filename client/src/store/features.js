@@ -3,9 +3,8 @@ import axios from "axios";
 
 export const getGenres = createAsyncThunk("netflix/genres", async () => {
   try {
-    console.log(
-      `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
-    );
+    const axios_url = `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`;
+    console.log(axios_url);
     const {
       data: { genres },
     } = await axios.get(
