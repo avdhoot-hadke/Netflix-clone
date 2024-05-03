@@ -16,7 +16,8 @@ export default function MyList() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState(undefined);
   // const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
-  const movies = useSelector((state) => state.netflix.movies);
+  // const movies = useSelector((state) => state.netflix.movies);
+  const movies = email != undefined ? useSelector((state) => state.netflix.movies) : null;
   // const genres = useSelector((state) => state.netflix.genres);
 
   useEffect(() => {
