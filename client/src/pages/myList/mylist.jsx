@@ -17,14 +17,14 @@ export default function MyList() {
   const [email, setEmail] = useState(undefined);
   // const genresLoaded = useSelector((state) => state.netflix.genresLoaded);
   // const movies = useSelector((state) => state.netflix.movies);
-  const movies = email != undefined ? useSelector((state) => state.netflix.movies) : null;
+  const movies = useSelector((state) => state.netflix.movies);
   // const genres = useSelector((state) => state.netflix.genres);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(firebaseAuth, (currentUser) => {
       if (currentUser) {
         setEmail(currentUser.email);
-        dispatch(getUserLikedMovies({ email }));
+        email != undefined && dispatch(getUserLikedMovies({ email }));
       } else {
         navigate("/login");
       }
