@@ -162,7 +162,7 @@ export const fetchDataByGenre = createAsyncThunk(
 export const getUserLikedMovies = createAsyncThunk(
   "netflix/getLiked",
   async ({ email }) => {
-    if (email=="") {
+    if (email== undefined) {
       console.log("email", email)
       throw new Error("Email is required.");
     }
@@ -177,6 +177,7 @@ export const getUserLikedMovies = createAsyncThunk(
           },
         }
       );
+      console.log("email", email);
       console.log("FEAT", movies);
       return movies;
     } catch (error) {
