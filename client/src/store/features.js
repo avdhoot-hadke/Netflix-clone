@@ -11,6 +11,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
     } = await axios.get(
       `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
     );
+    console.log("result", data);
     return genres;
   } catch (error) {
     console.error("Error fetching movies:", error);
