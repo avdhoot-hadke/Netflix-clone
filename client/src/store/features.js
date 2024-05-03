@@ -8,7 +8,7 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
     const {
       data: { genres },
     } = await axios.get(axios_url);
-    console.log("result", data);
+    console.log("result", genres);
     return genres;
   } catch (error) {
     console.error("Error fetching movies:", error);
