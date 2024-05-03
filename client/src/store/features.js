@@ -162,6 +162,9 @@ export const fetchDataByGenre = createAsyncThunk(
 export const getUserLikedMovies = createAsyncThunk(
   "netflix/getLiked",
   async ({ email }) => {
+    if (!email) {
+      throw new Error("Email is required.");
+    }
     try {
       const {
         data: { movies },
