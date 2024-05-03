@@ -17,9 +17,9 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 
 const getVideo = async (type, id) => {
   try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
-    );
+    const axios_url = `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
+    console.log(axios_url);
+    const response = await axios.get(axios_url);
 
     if (response.status === 200) {
       const { results } = response.data;
