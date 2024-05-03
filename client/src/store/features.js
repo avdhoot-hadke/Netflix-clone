@@ -163,6 +163,7 @@ export const getUserLikedMovies = createAsyncThunk(
   "netflix/getLiked",
   async ({ email }) => {
     if (email=="") {
+      console.log("email", email)
       throw new Error("Email is required.");
     }
     try {
