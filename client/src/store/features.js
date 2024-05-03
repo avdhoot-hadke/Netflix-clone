@@ -3,11 +3,11 @@ import axios from "axios";
 
 export const getGenres = createAsyncThunk("netflix/genres", async () => {
   try {
-    const axios_url = `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`;
-    console.log(axios_url);
     const {
       data: { genres },
-    } = await axios.get(axios_url);
+    } = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+    );
     console.log("result", genres);
     return genres;
   } catch (error) {
@@ -17,9 +17,9 @@ export const getGenres = createAsyncThunk("netflix/genres", async () => {
 
 const getVideo = async (type, id) => {
   try {
-    const axios_url = `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`;
-    console.log(axios_url);
-    const response = await axios.get(axios_url);
+    const response = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/${type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}`
+    );
 
     if (response.status === 200) {
       const { results } = response.data;
@@ -27,7 +27,6 @@ const getVideo = async (type, id) => {
       if (results && Array.isArray(results) && results.length > 0) {
         const [data] = results;
         const link = `https://www.youtube.com/embed/${data.key}`;
-        // console.log(link);
         return link;
       } else {
         console.error("No valid video data found");
