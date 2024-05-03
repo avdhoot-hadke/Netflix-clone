@@ -3,6 +3,9 @@ import axios from "axios";
 
 export const getGenres = createAsyncThunk("netflix/genres", async () => {
   try {
+    console.log(
+      `${process.env.REACT_APP_BASE_URL}/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}`
+    );
     const {
       data: { genres },
     } = await axios.get(
@@ -182,7 +185,7 @@ export const getUserLikedMovies = createAsyncThunk(
       return movies;
     } catch (error) {
       console.error("Error fetching liked movies:", error);
-      throw error; // Rethrow the error to be caught by the rejected action
+      throw error;
     }
   }
 );
@@ -206,7 +209,7 @@ export const removeUserLikedMovies = createAsyncThunk(
       return movies;
     } catch (error) {
       console.error("Error fetching liked movies:", error);
-      throw error; // Rethrow the error to be caught by the rejected action
+      throw error;
     }
   }
 );
